@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Surprise</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/style.css">
+<script>
+if(!isUnlocked("gallery_done")){
+  window.location.href = "gallery.html";
+}
+</script>
+</head>
+
+<body class="page-surprise">
+
+<header class="topbar">
+<div class="logo">🎁</div>
+<button class="menu-btn" id="menuBtn">☰</button>
+</header>
+
+<nav class="side-menu" id="sideMenu">
+<a href="index.html">Home</a>
+<a href="message.html">Message</a>
+<a href="memories.html">Memories</a>
+<a href="gallery.html">Gallery</a>
+<a href="surprise.html" class="active">Something Special</a>
+</nav>
+
+<div class="overlay" id="overlay"></div>
+<div id="loader"></div>
+
+<main class="container">
+
+<h1>One Last Thing</h1>
+<h3> Anna…
+You matter more than you think.</h3>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<p style=" font-size: 20px;">My love... Today is your special day. I just wanted to make it more special for you. You deserve all this. I hope you're enjoying this site.<br>
+But but but, fun isn't over yet. Just keep exploring step by step.
+<a style="color: white; font-size: 25px;" href="" target="_blank">click here baby</a>
+<br>
+<br>
+huh.. it's not over yet.
+<a style=" font-size: 25px; color: white;" href="" target="_blank">click this</a>
+<br>
+<br>
+
+<button id="revealBtn">Reveal</button>
+
+<p id="secret" class="hidden">
+Cutie.. so you finally reached here. Great job
+</p>
+
+</main>
+
+<footer class="footer">Made with love 🤍</footer>
+
+<script src="js/menu.js"></script>
+<script src="js/effects.js"></script>
+<script src="js/unlock.js"></script>
+</body>
+</html>

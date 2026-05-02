@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Memories</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="page-memories">
+
+<header class="topbar">
+<div class="logo">🧠</div>
+<button class="menu-btn" id="menuBtn">☰</button>
+</header>
+
+<nav class="side-menu" id="sideMenu">
+<a href="index.html">Home</a>
+<a href="message.html">Message</a>
+<a href="memories.html" class="active">Memories</a>
+<a href="gallery.html">Gallery</a>
+<a href="surprise.html">Something Special</a>
+</nav>
+
+<div class="overlay" id="overlay"></div>
+<div id="loader"></div>
+
+<main class="container">
+<h1>Memories</h1>
+
+<ul class="memories">
+  <li>One of the most beautiful things in this friendship is the quiet understanding between us. The way we just get each other’s humor, moods, and even the unspoken struggles.</li>
+
+  <li>Remember that night when we talked almost the entire night? It wasn’t just a late chat. It was one of the best moments of my life… because I spoke in a way I never had before. That night, I discovered a version of myself I didn’t even know existed.</li>
+
+  <li>Even though we don’t talk as much as before, the energy hasn’t changed. It’s still the best part of my day when I get to talk to you.</li>
+</ul>
+
+<p>Some memories don’t need explanations… they just stay.</p>
+</main>
+
+<footer class="footer">Made with love 🤍</footer>
+
+<script src="js/menu.js"></script>
+<script src="js/unlock.js"></script>
+<script>
+if(isUnlocked("message_done")){
+  unlock("memories_done");
+}
+</script>
+</body>
+</html>

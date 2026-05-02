@@ -1,0 +1,272 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: "Segoe UI", Arial, sans-serif;
+    overflow-x:hidden;
+    background:#fff;
+    color:#2b2b2b;
+    line-height:1.7;
+}
+
+/* ---------------- BACKGROUND FEEL ---------------- */
+
+body.page-home{
+    background: linear-gradient(135deg,#ffe6f0,#ffffff);
+}
+
+body.page-message{
+    background: linear-gradient(135deg,#fff0f5,#fffafc);
+}
+
+body.page-memories{
+    background: linear-gradient(135deg,#eef3ff,#ffffff);
+}
+
+body.page-gallery{
+    background:#fff;
+}
+
+body.page-surprise{
+    background:black;
+    color:beige;
+}
+
+/* ---------------- TOPBAR ---------------- */
+
+.topbar{
+    position:fixed;
+    top:0;
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    padding:12px 15px;
+    background:lavender;
+    backdrop-filter:blur(10px);
+    z-index:1000;
+}
+
+.menu-btn {
+    font-size: 30px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: black;
+    z-index: 1002;
+}
+
+/* ---------------- CONTAINER ---------------- */
+
+.container{
+    max-width:850px;
+    margin:100px auto;
+    padding:20px;
+    animation:fadeUp .8s ease;}
+
+@keyframes fadeUp{
+    from{opacity:0;transform:translateY(10px);}
+    to{opacity:1;transform:translateY(0);}
+}
+
+/* ---------------- TEXT FEEL ---------------- */
+
+h1{
+    color:#ff4f8b;
+    margin-bottom:20px;
+}
+
+p{
+    font-size:17px;
+    opacity:.9;
+}
+
+/* ---------------- MEMORY STYLE ---------------- */
+
+.memories li{
+    margin:15px 0;
+    padding:12px;
+    border-left:3px solid #ff4f8b;
+    background:rgba(255,79,139,0.05);
+    border-radius:8px;
+}
+
+/* ---------------- BUTTON ---------------- */
+
+button{
+    padding:12px 25px;
+    border:none;
+    border-radius:30px;
+    cursor:pointer;
+    background:beige;
+    color:black;
+    box-shadow:0 6px 20px rgba(255,79,139,0.25);
+    transition:.5s;
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+
+/* ---------------- SECRET REVEAL ---------------- */
+
+.hidden{
+    opacity:0;
+    transform:translateY(10px);
+    transition:.6s ease;
+}
+
+.hidden.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* ---------------- GALLERY ---------------- */
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:10px;
+}
+
+img{
+    width:100%;
+    border-radius:10px;
+    transition:.3s;
+}
+
+img:hover{
+    transform:scale(1.03);
+}
+
+/* ---------------- MENU ---------------- */
+
+.side-menu{
+    position:fixed;
+    left:-260px;
+    top:0;
+    width:260px;
+    height:100%;
+    background:lavender;
+    padding-top:60px;
+    transition:.3s;
+    z-index:1001;
+}
+
+.side-menu a{
+    display:block;
+    padding:15px;
+    color:black;
+    text-decoration:none;
+}
+
+.side-menu a.active{
+    background:plum;
+}
+
+.side-menu.active{
+    left:0;
+}
+
+.overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.4);
+    opacity:0;
+    pointer-events:none;
+    transition:.3s;
+}
+
+.overlay.active{
+    opacity:1;
+    pointer-events:auto;
+}
+
+/* ---------------- FOOTER ---------------- */
+
+.footer{
+    text-align:center;
+    padding:30px;
+    opacity:.6;
+}
+
+/* ---------------- EMOTIONAL TYPE EFFECT ---------------- */
+
+.type {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid #ff4f8b;
+    width: 0;
+    max-width: 100%;
+    animation:
+        typing 2.5s steps(30, end) forwards,
+        blinkCursor 0.7s step-end 4,
+        removeCursor 0s forwards;
+    animation-delay: 0s, 0s, 3s;
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes blinkCursor {
+    50% {
+        border-color: transparent;
+    }
+}
+
+@keyframes removeCursor {
+    to {
+        border-right: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .type {
+        white-space: normal;
+        width: auto;
+        border-right: none;
+        animation: fadeUp 1s ease forwards;
+    }
+
+    h1 {
+        font-size: 28px;
+        line-height: 1.4;
+    }
+}
+
+.heart {
+        font-size: 2rem;
+        color: red;
+        animation: beat 1s infinite;
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 15px;
+  line-height: 1.6;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.8s forwards;
+}
+
+li:nth-child(1) { animation-delay: 0.3s; }
+li:nth-child(2) { animation-delay: 0.8s; }
+li:nth-child(3) { animation-delay: 1.3s; }
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

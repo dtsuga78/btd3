@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Gallery</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="page-gallery">
+
+<header class="topbar">
+<div class="logo">🖼️</div>
+<button class="menu-btn" id="menuBtn">☰</button>
+</header>
+
+<nav class="side-menu" id="sideMenu">
+<a href="index.html">Home</a>
+<a href="message.html">Message</a>
+<a href="memories.html">Memories</a>
+<a href="gallery.html" class="active">Gallery</a>
+<a href="surprise.html">Something Special</a>
+</nav>
+
+<div class="overlay" id="overlay"></div>
+<div id="loader"></div>
+
+<main class="container">
+<h1>Gallery</h1>
+<p>Happy Birthday Baby.</p>
+
+<div class="grid">
+<img src="assets/pic/img1.jpg">
+<img src="assets/pic/img2.jpg">
+<img src="assets/pic/img3.jpg">
+<img src="assets/pic/img.jpg">
+<img src="assets/pic/img.jpg">
+<img src="assets/pic/img.jpg">
+</div>
+</main>
+
+<footer class="footer">Made with love 🤍</footer>
+
+<script src="js/menu.js"></script>
+<script src="js/unlock.js"></script>
+<script>
+if(isUnlocked("memories_done")){
+  unlock("gallery_done");
+}
+</script>
+</body>
+</html>
