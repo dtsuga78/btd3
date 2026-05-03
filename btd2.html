@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday, Bestie ❤️</title>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Arial', sans-serif;
+    }
+
+    body {
+        background: lavender;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .card {
+        background: white;
+        max-width: 700px;
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        text-align: center;
+    }
+
+    h1 {
+        color: #ff4f81;
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+    }
+
+    p {
+        font-size: 1.1rem;
+        color: #444;
+        line-height: 1.8;
+        margin-bottom: 18px;
+    }
+
+    .heart {
+        font-size: 2rem;
+        color: red;
+        animation: beat 1s infinite;
+    }
+
+    @keyframes beat {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.2); }
+        100% { transform: scale(1); }
+    }
+
+    button {
+        margin-top: 20px;
+        background: #ff4f81;
+        color: white;
+        border: none;
+        padding: 14px 28px;
+        border-radius: 30px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        background: lavender;
+    }
+
+    #secretMessage {
+        display: none;
+        margin-top: 25px;
+        font-weight: bold;
+        color: #d6336c;
+        font-size: 1.2rem;
+    }
+</style>
+</head>
+<body>
+
+<div class="card">
+    <h1>Happy Birthday, Idiot Bestie ❤️</h1>
+<p>You know… you’re actually kind of annoying.</p>
+
+<p>Like seriously, you show up, take over my mood, mess with my head, and then act like it’s nothing.</p>
+
+<p>One minute we’re arguing over something stupid, the next we’re laughing like idiots… and somehow, I never get tired of it.</p>
+
+<p>It’s unfair, honestly.</p>
+
+<p>You weren’t supposed to become this important.</p>
+
+<p>But here you are — stuck in my thoughts, in my routine, in all the small moments I didn’t even realize mattered until you were part of them.</p>
+
+<p>And yeah… I won’t say this out loud because you’d get way too proud of yourself.</p>
+
+<p>But if I’m being real?</p>
+
+<p>Life got a little better the moment you walked into it.</p>
+
+<p>So don’t let it get to your head.</p>
+
+<p>…but also don’t go anywhere.</p>
+    <button onclick="showMessage()">Click here</button>
+
+    <div id="secretMessage">
+        No matter what happens, our bond will always stay special.  
+        Happy Birthday to my favorite human ❤️
+    </div>
+</div>
+
+<script>
+function showMessage() {
+    document.getElementById("secretMessage").style.display = "block";
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday ANNA💜</title>
+
+<style>
+/* --------------------- */
+/* ANIMATED BACKGROUND */
+/* --------------------- */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", serif;
+
+    background: linear-gradient(135deg, #2b1055, #6a00f4, #c77dff);
+    background-size: 400% 400%;
+    animation: bgMove 12s infinite ease-in-out;
+
+    color: white;
+    overflow-x: hidden;
+}
+
+@keyframes bgMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* INTRO */
+.intro-screen {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: grey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    opacity: 1;
+    transition: opacity 1s ease;
+}
+
+.intro-screen.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.intro-text {
+    font-size: 3rem;
+    color: #d6aaff;
+    animation: introGlow 2s infinite alternate;
+}
+
+@keyframes introGlow {
+    from { text-shadow: 0 0 10px #bb77ff; }
+    to { text-shadow: 0 0 25px #e0afff; }
+}
+
+/* CONTAINER */
+.container {
+    text-align: center;
+    padding-top: 60px;
+}
+
+/* BTS LOGO */
+.bts-logo img {
+    width: 90px;
+    filter: drop-shadow(0 0 20px #d6aaff);
+    animation: logoFloat 4s infinite ease-in-out;
+}
+
+@keyframes logoFloat {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+
+/* TITLES */
+.title {
+    font-size: 2.5rem;
+    color: #e6c9ff;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 12px #c77dff; }
+    to { text-shadow: 0 0 25px #e8baff; }
+}
+
+.subtitle {
+    opacity: 0.85;
+}
+
+/* ICONS */
+.icons {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.icon-btn {
+    font-size: 2rem;
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
+    padding: 18px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.icon-btn:hover {
+    transform: scale(1.2);
+}
+
+/* WISH BOX */
+.wish-box {
+    margin-top: 40px;
+    padding: 20px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 12px;
+    width: 80%;
+    max-width: 500px;
+    margin: auto;
+    min-height: 120px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 0.5s;
+}
+
+.wish-box.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* SLIDESHOW */
+.slideshow img {
+    width: 260px;
+    height: 260px;
+    border-radius: 20px;
+    margin-top: 40px;
+}
+</style>
+</head>
+
+<body>
+
+<audio id="bg-music" loop>
+    <source src="assets/music/still_with_you.mp3" type="audio/mpeg">
+</audio>
+
+<div id="intro" class="intro-screen">
+    <h1 class="intro-text">🎉 Happy Birthday Love 💜</h1>
+</div>
+
+<div class="container">
+
+    <div class="bts-logo">
+        <img src="assets/pic/bts.png">
+    </div>
+
+    <h1 class="title">Happy Birthday Cutie 💜</h1>
+    <p class="subtitle">Tap any icon</p>
+
+    <div class="icons">
+        <button class="icon-btn" onclick="showWish(1)">💜</button>
+        <button class="icon-btn" onclick="showWish(2)">🎶</button>
+        <button class="icon-btn" onclick="showWish(3)">✨</button>
+    </div>
+
+    <div class="wish-box" id="wishBox">
+        <p id="wishText"></p>
+    </div>
+
+    <div class="slideshow">
+        <img id="memberSlide" src="assets/pic/bts2.jpg">
+    </div>
+
+</div>
+
+<script>
+/* MUSIC FIX */
+const music = document.getElementById("bg-music");
+document.body.addEventListener("click", () => {
+    music.play().catch(()=>{});
+}, { once: true });
+
+/* INTRO + SLIDESHOW (MERGED PROPERLY) */
+window.addEventListener("load", () => {
+
+    // intro fade
+    const intro = document.getElementById("intro");
+    setTimeout(() => {
+        intro.classList.add("hidden");
+        setTimeout(() => intro.style.display = "none", 1000);
+    }, 2200);
+
+    // start slideshow
+    startSlideshow();
+});
+
+/* WISHES */
+const wishes = {
+    1: "Happy Birthday, Anna 💜 You make the world softer just by being in it.",
+    2: "Another year, another glow. May this year treat you with kindness and joy.",
+    3: "You deserve love, peace and success. And remember I’m always here for you."
+};
+
+let typingTimeout;
+
+function typeEffect(text, id) {
+    const el = document.getElementById(id);
+    el.innerHTML = "";
+    let i = 0;
+
+    if (typingTimeout) clearTimeout(typingTimeout);
+
+    function type() {
+        if (i < text.length) {
+            el.innerHTML += text.charAt(i++);
+            typingTimeout = setTimeout(type, 40);
+        }
+    }
+    type();
+}
+
+function showWish(n) {
+    document.getElementById("wishBox").classList.add("show");
+    typeEffect(wishes[n], "wishText");
+}
+
+/* SLIDESHOW */
+const images = [
+    "assets/pic/bts2.jpg",
+    "assets/pic/rm.jpg",
+    "assets/pic/jin.jpg",
+    "assets/pic/suga.jpg",
+    "assets/pic/jimin.jpg",
+    "assets/pic/hobi.jpg",
+    "assets/pic/v.jpg",
+    "assets/pic/jk.jpg"
+];
+
+let i = 0;
+
+function startSlideshow() {
+    const img = document.getElementById("memberSlide");
+    img.src = images[i];
+    i = (i + 1) % images.length;
+    setTimeout(startSlideshow, 3000);
+}
+</script>
+
+</body>
+</html>

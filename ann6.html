@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Anna ✨</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
+    color:white;
+    overflow-x:hidden;
+    min-height:100vh;
+}
+
+.stars{
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    z-index:-1;
+    pointer-events:none;
+}
+
+.star{
+    position:absolute;
+    width:2px;
+    height:2px;
+    background:white;
+    border-radius:50%;
+    opacity:0.7;
+    animation:twinkle 2s infinite ease-in-out;
+}
+
+@keyframes twinkle{
+    0%,100%{
+        opacity:0.2;
+        transform:scale(1);
+    }
+    50%{
+        opacity:1;
+        transform:scale(1.8);
+    }
+}
+
+.container{
+    width:90%;
+    max-width:900px;
+    margin:auto;
+    padding:40px 0;
+}
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:20px;
+}
+
+.hero h1{
+    font-size:clamp(2rem,6vw,4.5rem);
+    line-height:1.2;
+    margin-bottom:20px;
+    background:linear-gradient(to right,#ff9a9e,#fad0c4,#fbc2eb);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+    font-size:clamp(1rem,2.5vw,1.4rem);
+    max-width:700px;
+    opacity:0.9;
+    line-height:1.8;
+}
+
+.section{
+    margin:60px 0;
+    padding:35px 25px;
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:24px;
+    backdrop-filter:blur(18px);
+}
+
+.section h2{
+    font-size:clamp(1.5rem,4vw,2.3rem);
+    margin-bottom:20px;
+    text-align:center;
+}
+
+.section p{
+    font-size:1rem;
+    line-height:1.9;
+    text-align:center;
+    opacity:0.95;
+}
+
+.hug-count{
+    font-size:clamp(3rem,8vw,5rem);
+    font-weight:700;
+    text-align:center;
+    margin:20px 0;
+    background:linear-gradient(to right,#f6d365,#fda085);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.btn{
+    display:block;
+    margin:20px auto 0;
+    padding:16px 28px;
+    border:none;
+    border-radius:50px;
+    background:linear-gradient(45deg,#ff758c,#ff7eb3);
+    color:white;
+    font-size:1rem;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.btn:hover{
+    transform:translateY(-3px);}
+
+.message{
+    margin-top:20px;
+    text-align:center;
+    font-size:1rem;
+}
+
+.question{
+    font-size:1.1rem;
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.options{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    justify-content:center;
+}
+
+.option{
+    padding:14px 20px;
+    background:rgba(255,255,255,0.12);
+    border-radius:40px;
+    cursor:pointer;
+    transition:0.3s;
+    text-align:center;
+}
+
+.option:hover{
+    background:rgba(255,255,255,0.2);
+    transform:scale(1.03);
+}
+
+.final-message{
+    font-size:clamp(1.2rem,3vw,1.6rem);
+    text-align:center;
+    line-height:2;
+    font-weight:500;
+}
+
+.secret{
+    margin-top:20px;
+    display:none;
+    text-align:center;
+    font-size:1rem;
+    line-height:1.8;
+}
+
+@media(max-width:768px){
+    .section{
+        padding:28px 18px;
+    }
+
+    .btn{
+        width:100%;
+        max-width:300px;
+    }
+
+    .option{
+        width:100%;
+    }
+   .btn1{
+    display:block;
+    margin:20px auto 0;
+    padding:16px 28px;
+    border:none;
+    border-radius:50px;
+    background:linear-gradient(45deg,#ff758c,#ff7eb3);
+    color:white;
+    font-size:1rem;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.btn1:hover{
+    transform:translateY(-3px);
+	background: lavender;}
+}
+</style>
+</head>
+<body>
+
+<div class="stars" id="stars"></div>
+
+<div class="container">
+
+    <section class="hero">
+        <h1>For Anna</h1>
+        <p>
+            Some people enter your life quietly.<br>
+            You?<br>
+            You rewired mine.
+            <br><br>
+            This is not just a website.
+            It’s proof that distance failed.
+        </p>
+    </section>
+
+    <section class="section">
+        <h2>🤗 Distance Hug Counter</h2>
+        <div class="hug-count" id="hugCount">0</div>
+        <p>Every click = one virtual hug sent across the universe.</p>
+        <button class="btn" onclick="sendHug()">Send a Hug</button>
+        <div class="message" id="hugMessage"></div>
+    </section>
+
+    <section class="section">
+        <h2>💌 Open Only When You Miss Me</h2>
+        <p>
+            Some people are temporary chapters.<br>
+            You became a permanent paragraph.
+        </p>
+        <button class="btn1" onclick="revealSecret()">Open It</button>
+
+        <div class="secret" id="secretMessage">
+            You were never just a friend.<br><br>
+
+            You became a place my mind returns to  
+            when life gets loud.<br><br>
+
+            The truth?<br>
+            I don't always say it.<br>
+            But your existence matters to me more than I show.<br><br>
+
+            And if distance is a test—<br>
+            we're passing it beautifully.
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>✨ Final Message</h2>
+        <div class="final-message">
+            No matter where life throws us,<br>
+            I hope one thing never changes:<br><br>
+
+            You still being you.<br>
+            And me still being the person<br>
+            who quietly thanks life for letting me know you.
+        </div>
+    </section>
+
+</div>
+<a style="color: beige;" href="https://hbd-ann.netlify.app">Go back</a>
+<script>
+function createStars(){
+    const stars = document.getElementById("stars");
+
+    for(let i=0;i<120;i++){
+        let star = document.createElement("div");
+        star.classList.add("star");
+
+        star.style.left = Math.random()*100 + "%";
+        star.style.top = Math.random()*100 + "%";
+        star.style.animationDelay = Math.random()*3 + "s";
+
+        stars.appendChild(star);
+    }
+}
+createStars();
+
+let hugs = localStorage.getItem("anna_hugs")
+    ? parseInt(localStorage.getItem("anna_hugs"))
+    : 0;
+
+const hugCount = document.getElementById("hugCount");
+const hugMessage = document.getElementById("hugMessage");
+
+function updateHugs(){
+    hugCount.textContent = hugs;
+
+    const messages = [
+        "Hug received. Distance lost. ❤️",
+        "That one felt real. 🤍",
+        "One more reason to smile today.",
+        "Bestie energy detected ✨",
+        "You're dangerously important to me."
+    ];
+
+    hugMessage.textContent = messages[hugs % messages.length];
+    localStorage.setItem("anna_hugs", hugs);
+}
+
+function sendHug(){
+    hugs++;
+    updateHugs();
+}
+updateHugs();
+
+const questions = [
+{
+q:"When life gets too loud, what do I usually do?",
+options:["Disappear quietly","Talk too much","Pretend I'm fine"],
+answer: "Disappear quietly"
+},
+{
+q:"What matters more to me?",
+options:["Being understood","Being impressive","Being right"],
+answer:0
+},
+{
+q:"What makes someone permanent?",
+options:["Consistency","Pretty words","Random luck"],
+answer:0
+}
+];
+
+let current = 0;
+let score = 0;
+
+const quizArea = document.getElementById("quizArea");
+
+function showQuestion(){
+    if(current >= questions.length){
+        quizArea.innerHTML = `
+            <p style="text-align:center; font-size:1.2rem;">
+                Score: ${score}/3 <br><br>
+                Honestly... you know me too well.
+            </p>
+        `;
+        return;
+    }
+
+    let q = questions[current];
+
+    quizArea.innerHTML = `
+        <div class="question">${q.q}</div>
+        <div class="options">
+            ${q.options.map((opt,i)=>
+                `<div class="option" onclick="answer(${i})">${opt}</div>`
+            ).join("")}
+        </div>
+    `;
+}
+
+function answer(selected){
+    if(selected === questions[current].answer){
+        score++;
+    }
+
+    current++;
+    showQuestion();
+}
+
+showQuestion();
+
+function revealSecret(){
+    document.getElementById("secretMessage").style.display = "block";
+}
+</script>
+
+</body>
+</html>

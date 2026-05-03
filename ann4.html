@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Bestie</title>
+    <style>
+        :root {
+            --primary: #ff758c;
+            --secondary: #ff7eb3;
+            --bg: #f0f2f5;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            color: #444;
+        }
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            text-align: center;
+            max-width: 350px;
+            width: 90%;
+        }
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 5px solid var(--secondary);
+            object-fit: cover;
+            margin-bottom: 1rem;
+        }
+        h1 { margin: 10px 0; color: var(--primary); }
+        p { line-height: 1.6; font-size: 1.1rem; }
+        .btn {
+            background: var(--primary);;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.2s;
+            margin-top: 15px;
+        }
+        .btn:hover { transform: scale(1.05);	   	background: lavender;
+ }
+        #message { display: none; margin-top: 20px; font-style: italic; color: #666; }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <img src="assets/pic/ann4.jpg" alt="Bestie" class="profile-img">
+        <h1>Hey Bestie! ✨</h1>
+        <p>Just a little digital space to remind you how awesome you are. Thanks for always being there!</p>
+        
+        <button class="btn" onclick="revealSecret()">Click for a message</button>
+        <div id="message">"You're the person I can always count on. Let's make more memories! 💜"</div>
+    </div>
+    <script>
+        function revealSecret() {
+            const msg = document.getElementById('message');
+            msg.style.display = 'block';
+            alert("🎉 You are officially the best friend ever!");
+        }
+    </script>
+</body>
+</html>
+

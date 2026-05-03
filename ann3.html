@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARMY Memory Vault</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: radial-gradient(circle at top, #2b1055, #0b001a);
+        color: white;
+        overflow-x: hidden;
+    }
+
+    .center {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+    }
+
+    h1 {
+        color: #d6a4ff;
+        font-size: 2rem;
+    }
+
+    p {
+        opacity: 0.8;
+        max-width: 420px;
+    }
+
+    button {
+        margin-top: 15px;
+        padding: 12px 18px;
+        border: none;
+        border-radius: 25px;
+        background: #7b2cbf;
+        color: white;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        background: #9d4edd;
+    }
+
+    /* ✅ FIXED GRID SYSTEM */
+    .grid {
+        display: none;
+        width: 100%;
+        padding: 20px;
+        gap: 12px;
+        justify-content: center;
+        align-items: center;
+
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        max-width: 600px;
+        margin: auto;
+    }
+
+    .card {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        background: rgba(255,255,255,0.08);
+        border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: 0.3s;
+        backdrop-filter: blur(6px);
+        font-size: 0.9rem;
+    }
+
+    .card:hover {
+        transform: scale(1.07);
+        background: rgba(255,255,255,0.15);
+    }
+
+    .screen {
+        display: none;
+        height: 100vh;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .quote {
+        margin-top: 20px;
+        max-width: 500px;
+        font-size: 1.1rem;
+        color: #e0b3ff;
+    }
+
+    .tag {
+        font-size: 0.9rem;
+        opacity: 0.6;
+        margin-top: 5px;
+    }
+
+    /* 📱 MOBILE FIX */
+    @media (max-width: 480px) {
+        h1 {
+            font-size: 1.5rem;
+        }
+
+        .grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            padding: 15px;
+        }
+
+        .card {
+            font-size: 0.8rem;
+        }
+
+        p {
+            font-size: 0.9rem;
+        }
+    }
+
+</style>
+</head>
+
+<body>
+
+<div class="center" id="home">
+    <h1>ARMY Vault 💜</h1>
+    <p>
+        You are not just entering a website…  
+        you are stepping into a space where BTS and ARMY feelings exist.
+    </p>
+    <button onclick="start()">Enter Vault</button>
+</div>
+
+<div class="center grid" id="menu">
+
+    <div class="card" onclick="openCard('rm')">🐨 RM</div>
+    <div class="card" onclick="openCard('jin')">🐹 Jin</div>
+    <div class="card" onclick="openCard('suga')">🐱 SUGA</div>
+    <div class="card" onclick="openCard('jhope')">🐿️ J-Hope</div>
+    <div class="card" onclick="openCard('jimin')">🐥 Jimin</div>
+    <div class="card" onclick="openCard('v')">🐯 V</div>
+    <div class="card" onclick="openCard('jk')">🐰 Jungkook</div>
+    <div class="card" onclick="openCard('army')">💜 ARMY</div>
+</div>
+
+<div class="screen" id="screen">
+    <h1 id="title"></h1>
+    <div class="quote" id="quote"></div>
+    <div class="tag" id="tag"></div>
+    <button onclick="back()">Back to Vault</button>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br><p>
+<a style="size: 25px; color: red;" href="index.html">Go back to home page</a>"</p>
+
+<script>
+
+const data = {
+    rm: {
+        title: "RM — Leader Energy",
+        quotes: [
+            "Even when lost, you are still growing.",
+            "You don’t need to be perfect to lead your life.",
+            "Silence is also a form of strength."
+        ]
+    },
+    jin: {
+        title: "Jin — Comfort Smile",
+        quotes: [
+            "Eat well, rest well, and survive today.",
+            "It’s okay to just exist sometimes.",
+            "You are allowed to be soft."
+        ]
+    },
+    suga: {
+        title: "SUGA — Quiet Truth",
+        quotes: [
+            "Pain doesn’t define you, it refines you.",
+            "Even silence can be loud inside the heart.",
+            "Keep going, even if slowly."
+        ]
+    },
+    jhope: {
+        title: "J-Hope — Light Energy",
+        quotes: [
+            "Hope is not loud, but it is alive.",
+            "Your smile is not small, it is powerful.",
+            "Even dark days can dance."
+        ]
+    },
+    jimin: {
+        title: "Jimin — Warm Heart",
+        quotes: [
+            "You are enough even when you feel not enough.",
+            "Soft hearts survive the hardest storms.",
+            "Your feelings are valid."
+        ]
+    },
+    v: {
+        title: "V — Deep Soul",
+        quotes: [
+            "Loneliness is not empty, it is space to breathe.",
+            "You are art even when unfinished.",
+            "Mystery is also beauty."
+        ]
+    },
+    jk: {
+        title: "Jungkook — Growth Energy",
+        quotes: [
+            "You are still becoming yourself.",
+            "Try again. Always try again.",
+            "Failure is just training."
+        ]
+    },
+    army: {
+        title: "ARMY — Connection",
+        quotes: [
+            "You are never alone in this universe.",
+            "Somewhere, someone feels like you.",
+            "ARMY means we exist together."
+        ]
+    }
+};
+
+function start() {
+    document.getElementById("home").style.display = "none";
+    document.getElementById("menu").style.display = "grid";
+}
+
+function openCard(member) {
+    let d = data[member];
+    let quote = d.quotes[Math.floor(Math.random() * d.quotes.length)];
+
+    document.getElementById("menu").style.display = "none";
+    document.getElementById("screen").style.display = "flex";
+
+    document.getElementById("title").innerText = d.title;
+    document.getElementById("quote").innerText = quote;
+    document.getElementById("tag").innerText = "— BTS × ARMY Vault";
+}
+
+function back() {
+    document.getElementById("screen").style.display = "none";
+    document.getElementById("menu").style.display = "grid";
+}
+
+</script>
+
+</body>
+</html>
