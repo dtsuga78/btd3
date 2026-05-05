@@ -170,7 +170,7 @@ video {
 }
 
 .side-menu a.active{
-    background:plum;
+    background:pink;
 }
 
 .side-menu.active{
@@ -184,6 +184,7 @@ video {
     opacity:0;
     pointer-events:none;
     transition:.3s;
+    z-index: 1000;
 }
 
 .overlay.active{
@@ -191,6 +192,19 @@ video {
     pointer-events:auto;
 }
 
+/* HARD LOCK SCROLL (REAL FIX) */
+body.menu-open{
+    position:fixed;
+    width:100%;
+    overflow:hidden;
+}
+
+/* STOP SELECTION PROPERLY */
+body.menu-open *{
+    -webkit-user-select:none !important;
+    user-select:none !important;
+    -webkit-touch-callout:none !important;
+}
 /* ---------------- FOOTER ---------------- */
 
 .footer{
@@ -313,4 +327,15 @@ li:nth-child(3) { animation-delay: 1.3s; }
     width: 100%;
     height: 100%;
     object-fit: cover; /* fills nicely */
+}
+
+/* your existing styles above */
+
+body.menu-open {
+  overflow: hidden;
+}
+
+#overlay {
+  user-select: none;
+  -webkit-user-select: none;
 }
