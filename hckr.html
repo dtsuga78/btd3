@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Restricted System</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Courier New", monospace;
+  background: black;
+  color: #00ff00;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+/* LOCK SCREEN */
+#lock {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#lock input {
+  background: black;
+  color: #00ff00;
+  border: 1px solid #00ff00;
+  padding: 10px;
+  width: 240px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+#lock button {
+  margin-top: 15px;
+  padding: 10px 25px;
+  background: #00ff00;
+  color: black;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#msg {
+  margin-top: 15px;
+  min-height: 20px;
+  color: red;
+}
+
+/* MAIN */
+#main { display: none; }
+
+header {
+  font-size: 2.2em;
+  padding: 25px;
+  border-bottom: 2px solid #00ff00;
+  text-shadow: 0 0 12px #00ff00;
+}
+
+/* CONTAINER */
+.container {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 20px;
+  border: 1px solid #00ff00;
+  border-radius: 10px;
+  box-shadow: 0 0 25px rgba(0,255,0,0.4);
+}
+
+/* TERMINAL */
+.terminal {
+  background: black;
+  border: 1px solid #00ff00;
+  padding: 15px;
+  text-align: left;
+  margin: 20px 0;
+  min-height: 120px;
+}
+
+/* GALLERY */
+.gallery{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:15px;
+}
+
+.gallery img {
+  width: 100%;
+  max-width: 260px;
+  margin: 10px;
+  border: 1px solid #00ff00;
+  filter: grayscale(60%);
+  transition: 0.4s;
+}
+.gallery img:hover {
+  filter: none;
+  transform: scale(1.05);
+}
+
+.cake{
+  position:relative;
+  width:220px;
+  height:220px;
+  margin:40px auto;
+  cursor:pointer;
+  transition:.4s ease;
+
+  background:url("assets/pic/cake.png") center/contain no-repeat;
+  filter:drop-shadow(0 0 15px #00ff00);
+}
+
+.cake:hover{
+  transform:scale(1.08) rotate(4deg);
+  filter:drop-shadow(0 0 30px #00ff00);
+}
+
+.cake::after{
+  content:"[ CLICK TO BREACH ]";
+  position:absolute;
+  bottom:-25px;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:14px;
+  color:#00ff00;
+  letter-spacing:2px;
+  white-space:nowrap;
+}
+
+/* CODE RAIN */
+.code-rain {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+.code-piece {
+  position: absolute;
+  color: #00ff00;
+  opacity: 0.6;
+  animation: fall linear infinite;
+}
+@keyframes fall {
+  to { transform: translateY(110vh); }
+}
+
+.site-footer {
+  text-align: center;
+  padding: 30px 10px;
+  font-size: 30px;
+  opacity: 0.8;
+}
+</style>
+</head>
+
+<body>
+
+<div class="code-rain"></div>
+
+<!-- LOCK -->
+<div id="lock">
+  <h2>RESTRICTED SYSTEM</h2>
+  <p>Unauthorized access prohibited.</p>
+  <input type="password" id="pass" placeholder="Enter Access Key">
+  <button onclick="unlock()">UNLOCK</button>
+  <p id="msg"></p>
+</div>
+
+<!-- MAIN -->
+<div id="main">
+<header>[ ACCESS GRANTED ] Happy Birthday Baby</header>
+
+<div class="container">
+
+<h2>Birthday Protocol Initiated</h2>
+
+<!-- TERMINAL INTRO -->
+<div class="terminal" id="terminal"></div>
+<br>
+<br>
+<br>
+<!-- CAKE -->
+<div class="cake" onclick="breachCake()"></div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<!-- GALLERY -->
+<div class="gallery">
+  <img src="/assets/pic/s1.jpg" loading="lazy">
+  <img src="/assets/pic/s2.jpg" loading="lazy">
+  <img src="/assets/pic/s3.jpg" loading="lazy">
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<!-- WISHES DATABASE -->
+<div class="terminal">
+  <h3>> Wish Database Loaded</h3>
+  <p>> "Happy Birthday. You’re not just a friend. You’re home."</p>
+  <p>> "No firewall can block the love and respect I have for you."</p>
+  <p>> "Another year older, another level unlocked."</p>
+  <p>> "If this world glitches, I’ve got your back."</p>
+  <p>> "Breach complete: wishing you peace, power, and happiness."</p>
+</div>
+<br><br>
+<!-- MUSIC -->
+<div class="terminal">
+  <h3>> Audio Transmission</h3>
+  <p>> Special frequency detected...</p>
+
+  <audio controls>
+    <source src="assets/audio/message.mp3" type="audio/mpeg">
+  </audio>
+</div>
+
+</div>
+</div>
+<footer class="site-footer">
+  Hope you like it 🤍
+</footer>
+<script>
+/* PASSWORD + PSYCHOLOGY */
+const PASSWORD = "you are mine";
+let attempts = 0;
+
+const responses = [
+  "Wrong. You know this.",
+  "Not numbers. Not dates.",
+  "Think emotionally.",
+  "Try what you mean to me.",
+  "Stop guessing. Start feeling.",
+  "Tell me if you can't find out",
+  "Fine.. you are mine",
+];
+
+function unlock() {
+  const input = document.getElementById("pass").value;
+  const msg = document.getElementById("msg");
+
+if (input === PASSWORD) {
+  sessionStorage.setItem("unlocked", "true"); // 👈 THIS IS THE KEY
+
+  document.getElementById("lock").style.display = "none";
+  document.getElementById("main").style.display = "block";
+  startTerminal();
+} else {
+  msg.textContent = responses[Math.min(attempts, responses.length - 1)];
+  document.getElementById("pass").value = "";
+  attempts++;
+}
+}
+
+/* TERMINAL TYPEWRITER */
+const lines = [
+  "> Initializing birthday sequence...",
+  "> Identity verified",
+  "> Bestie detected: Age 21, Happiness level: MAX",
+  "> Emotional firewall disabled",
+  "> Accessing memories...",
+  "> Welcome home ❤️"
+];
+
+let l = 0, c = 0;
+const terminal = document.getElementById("terminal");
+
+function startTerminal() {
+  const typer = setInterval(() => {
+    if (l < lines.length) {
+      if (c < lines[l].length) {
+        terminal.innerHTML += lines[l][c++];
+      } else {
+        terminal.innerHTML += "<br>";
+        c = 0; l++;
+      }
+    } else clearInterval(typer);
+  }, 40);
+}
+
+const breachSound = new Audio("assets/audio/breach.mp3");
+
+let breached = false;
+
+function breachCake() {
+
+  if (breached) return;
+
+  breached = true;
+
+  document.body.style.background = "#020";
+
+  terminal.innerHTML += `
+  <br>> Breach successful...
+  <br>> Hidden birthday payload unlocked
+  <br>> Dear Anna,
+  <br>> You deserve every soft thing this world can offer ❤️
+  `;
+
+  breachSound.play();
+}
+
+/* CODE RAIN */
+const rain = document.querySelector(".code-rain");
+for (let i = 0; i < 450; i++) {
+  const d = document.createElement("div");
+  d.className = "code-piece";
+  d.textContent = Math.random() > 0.5 ? "1" : "0";
+  d.style.left = Math.random() * 100 + "%";
+  d.style.fontSize = 12 + Math.random() * 14 + "px";
+  d.style.animationDuration = 3 + Math.random() * 5 + "s";
+  d.style.opacity = Math.random();
+  rain.appendChild(d);
+}
+// AUTO-UNLOCK IF SESSION EXISTS
+if (sessionStorage.getItem("unlocked") === "true") {
+  document.getElementById("lock").style.display = "none";
+  document.getElementById("main").style.display = "block";
+  startTerminal();
+}
+</script>
+
+</body>
+</html>
