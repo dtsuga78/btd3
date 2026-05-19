@@ -139,12 +139,16 @@ header {
   z-index: -1;
   overflow: hidden;
 }
+
 .code-piece {
   position: absolute;
   color: #00ff00;
   opacity: 0.6;
   animation: fall linear infinite;
+  will-change: transform;
+  transform: translateZ(0);
 }
+
 @keyframes fall {
   to { transform: translateY(110vh); }
 }
@@ -217,7 +221,7 @@ header {
   <h3>> Audio Transmission</h3>
   <p>> Special frequency detected...</p>
 
-  <audio controls>
+  <audio controls preload="metadata">
     <source src="assets/audio/Message.mp3" type="audio/mpeg">
   </audio>
 </div>
@@ -273,16 +277,16 @@ let l = 0, c = 0;
 const terminal = document.getElementById("terminal");
 
 function startTerminal() {
-  const typer = setInterval(() => {
-    if (l < lines.length) {
-      if (c < lines[l].length) {
-        terminal.innerHTML += lines[l][c++];
-      } else {
-        terminal.innerHTML += "<br>";
-        c = 0; l++;
-      }
-    } else clearInterval(typer);
-  }, 40);
+const typer = setInterval(() => {
+if (l < lines.length) {
+if (c < lines[l].length) {
+terminal.innerHTML += lines[l][c++];
+} else {
+terminal.innerHTML += "<br>";
+c = 0; l++;
+}
+} else clearInterval(typer);
+}, 40);
 }
 
 const breachSound = new Audio("assets/audio/breach.mp3");
@@ -309,8 +313,9 @@ function breachCake() {
 
 /* CODE RAIN */
 const rain = document.querySelector(".code-rain");
-for (let i = 0; i < 450; i++) {
-  const d = document.createElement("div");
+const rainCount = window.innerWidth < 768 ? 80 : 140;
+
+for (let i = 0; i < rainCount; i++) {  const d = document.createElement("div");
   d.className = "code-piece";
   d.textContent = Math.random() > 0.5 ? "1" : "0";
   d.style.left = Math.random() * 100 + "%";
